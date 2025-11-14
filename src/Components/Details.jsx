@@ -19,7 +19,7 @@ const ScoreBadge = ({ score }) => {
       )}
     >
       <img
-        src={score > 69 ? "/src/assets/icons/check.svg" : "/src/assets/icons/warning.svg"}
+        src={score > 69 ? "/icons/check.svg" : "/icons/warning.svg"}
         alt="score"
         className="size-4"
       />
@@ -55,7 +55,7 @@ const CategoryContent = ({ tips }) => {
         {tips.map((tip,index)=>(
             <div className="flex flex-row gap-2 items-center" key={index}>
             <img
-              src={tip.type === "good" ? "/src/assets/icons/check.svg" : "/src/assets/icons/warning.svg"}
+              src={tip.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"}
               alt="tip"
               className="size-5"
             />
@@ -77,7 +77,7 @@ const CategoryContent = ({ tips }) => {
           >
             <div className="flex flex-row gap-2 items-center">
               <img
-                src={tip.type === "good" ? "/src/assets/icons/check.svg" : "/src/assets/icons/warning.svg"}
+                src={tip.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"}
                 alt="tip"
                 className="size-5"
               />

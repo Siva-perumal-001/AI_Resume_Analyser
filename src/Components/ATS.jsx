@@ -10,10 +10,10 @@ const ATS = ({ score, suggestions }) => {
 
   const iconSrc =
     score > 69
-      ? "/src/assets/icons/ats-good.svg"
+      ? "/icons/ats-good.svg"
       : score > 49
-      ? "/src/assets/icons/ats-warning.svg"
-      : "/src/assets/icons/ats-bad.svg";
+      ? "/icons/ats-warning.svg"
+      : "icons/ats-bad.svg";
 
   const subtitle =
     score > 69 ? "Great Job!" : score > 49 ? "Good Start" : "Needs Improvement";
@@ -37,7 +37,7 @@ const ATS = ({ score, suggestions }) => {
           {suggestions.map((suggestion, index) => (
             <div key={index} className="flex items-start gap-3">
               <img
-                src={suggestion.type === "good" ? "/src/assets/icons/check.svg" : "/src/assets/icons/warning.svg"}
+                src={suggestion.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"}
                 alt={suggestion.type === "good" ? "Check" : "Warning"}
                 className="w-5 h-5 mt-1"
               />
