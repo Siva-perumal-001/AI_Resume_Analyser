@@ -1,42 +1,90 @@
+import { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import ResumeCard from "./Components/ResumeCard";
-import { resumes } from "./constants";
-import { useEffect } from "react";
 import { usePuterStore } from "./lib/puter.js";
-import { useNavigate } from "react-router-dom";
 
-const App = () => {
+const Home = () => {
   const init = usePuterStore((s) => s.init);
   const isLoading = usePuterStore((s) => s.isLoading);
-  const isAuthenticated = usePuterStore((s) => s.auth.isAuthenticated);
+  const auth = usePuterStore((s) => s.auth);
+  const kv = usePuterStore((s) => s.kv);
 
   const navigate = useNavigate();
 
+  // Store resumes
+  const [resumes, setResumes] = useState([]);
+  const [loadingResumes, setLoadingResumes] = useState(false);
+
+  // Initialize puter.js
   useEffect(() => {
     init();
   }, [init]);
 
+  // Redirect if not logged in
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    if (!isLoading && !auth.isAuthenticated) {
       navigate("/auth?next=/");
     }
-  }, [isLoading, isAuthenticated, navigate]);
+  }, [isLoading, auth.isAuthenticated, navigate]);
+
+  // Load stored resumes from KV
+  useEffect(() => {
+    const loadResumes = async () => {
+      setLoadingResumes(true);
+
+      const list = await kv.list("resume:*", true); // returns key + value
+
+      const parsed = list?.map((item) => JSON.parse(item.value)) || [];
+      setResumes(parsed);
+
+      setLoadingResumes(false);
+    };
+
+    loadResumes();
+  }, []);
 
   return (
-    <main className="bg-[url('./assets/images/bg-main.svg')] bg-cover">
+    <main className="bg-[url('./assets/images/bg-main.svg')] bg-cover min-h-screen">
       <Navbar />
 
       <section className="main-section">
         <div className="page-heading py-16">
           <h1>Track Your Applications & Resume Ratings</h1>
-          <h2>Review your submissions and check AI-powered feedback</h2>
+
+          {!loadingResumes && resumes.length === 0 ? (
+            <h2>No resumes found. Upload your first resume to get feedback.</h2>
+          ) : (
+            <h2>Review your submissions and check AI-powered feedback.</h2>
+          )}
         </div>
 
-        {resumes.length > 0 && (
+        {/* Loading Animation */}
+        {loadingResumes && (
+          <div className="flex flex-col items-center justify-center">
+            <img
+              src="/assets/images/resume-scan-2.gif"
+              className="w-[200px]"
+              alt="loading"
+            />
+          </div>
+        )}
+
+        {/* Resume Cards */}
+        {!loadingResumes && resumes.length > 0 && (
           <div className="resumes-section">
             {resumes.map((resume) => (
               <ResumeCard key={resume.id} resume={resume} />
             ))}
+          </div>
+        )}
+
+        {/* No resumes found */}
+        {!loadingResumes && resumes.length === 0 && (
+          <div className="flex flex-col items-center justify-center mt-10 gap-4">
+            <Link to="/upload" className="primary-button w-fit text-xl font-semibold">
+              Upload Resume
+            </Link>
           </div>
         )}
       </section>
@@ -44,4 +92,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
