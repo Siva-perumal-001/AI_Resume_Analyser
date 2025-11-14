@@ -6,7 +6,7 @@ import App from './App.jsx'
 import Upload from './Components/Upload'
 import Auth from './Components/Auth'
 import Resume from './Components/Resume'
-import Wipe from './Components/wipe'
+import Wipe from './Components/Wipe';
 
 const router = new createBrowserRouter([
   {
