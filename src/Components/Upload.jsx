@@ -62,7 +62,19 @@ const Upload = () => {
         ? feedback.message.content
         : feedback.message.content[0].text;
 
-    data.feedback = JSON.parse(feedbackText);
+    const fb = JSON.parse(feedbackText);
+
+    const convert = (s) => (s <= 10 ? s * 10 : s);
+    
+    fb.overallScore = convert(fb.overallScore);
+    fb.ATS.score = convert(fb.ATS.score);
+    fb.toneAndStyle.score = convert(fb.toneAndStyle.score);
+    fb.content.score = convert(fb.content.score);
+    fb.structure.score = convert(fb.structure.score);
+    fb.skills.score = convert(fb.skills.score);
+    
+    data.feedback = fb;
+        
 
     await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
@@ -89,7 +101,7 @@ const Upload = () => {
   };
 
   return (
-    <main className="bg-[url('/images/bg-main.svg')] bg-cover min-h-screen">
+    <main className="bg-[url('/src/assets/images/bg-main.svg')] bg-cover min-h-screen">
       <Navbar />
 
       <section className="main-section" >
@@ -99,7 +111,7 @@ const Upload = () => {
           {isProcessing ? (
             <>
               <h2 id="upload">{statusText}</h2>
-              <img src="src/assets/images/resume-scan.gif" className="w-full max-w-lg" />
+              <img src="/src/assets/images/resume-scan.gif" className="w-full max-w-lg" />
             </>
           ) : (
             <h2>Drop your resume for an ATS score and improvement tips</h2>

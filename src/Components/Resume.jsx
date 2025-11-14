@@ -57,7 +57,7 @@ const Resume = () => {
     <main className="!pt-0">
       <nav className="resume-nav">
         <Link to="/" className="back-button">
-          <img src="src/assets/icons/back.svg" alt="back" className="w-2.5 h-2.5" />
+          <img src="/src/assets/icons/back.svg" alt="back" className="w-2.5 h-2.5" />
           <span className="text-gray-800 text-sm font-semibold">
             Back to Homepage
           </span>
@@ -66,7 +66,7 @@ const Resume = () => {
 
       <div className="flex flex-row w-full max-lg:flex-col-reverse">
         {/* Left Side: Resume Preview */}
-        <section className="feedback-section bg-[url('/images/bg-small.svg')] bg-cover h-[100vh] sticky top-0 flex items-center justify-center">
+        <section className="feedback-section bg-[url('/src/assets/images/bg-small.svg')] bg-cover h-[100vh] sticky top-0 flex items-center justify-center">
           {imageUrl && resumeUrl && (
             <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] w-fit">
               <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
@@ -94,7 +94,7 @@ const Resume = () => {
               <Details feedback={feedback} />
             </div>
           ) : (
-            <img src="src/assets/images/resume-scan-2.gif" className="w-full" alt="loading" />
+            <img src="/src/assets/images/resume-scan-2.gif" className="w-full" alt="loading" />
           )} 
         </section>
       </div>
