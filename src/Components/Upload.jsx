@@ -67,6 +67,7 @@ const Upload = () => {
     await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
     setStatusText("Analysis complete, redirecting...");
+    console.log(data)
     navigate(`/resume/${uuid}`);
   };
 
@@ -91,13 +92,13 @@ const Upload = () => {
     <main className="bg-[url('/images/bg-main.svg')] bg-cover min-h-screen">
       <Navbar />
 
-      <section className="main-section">
+      <section className="main-section" >
         <div className="page-heading py-16">
           <h1>Smart feedback for your dream job</h1>
 
           {isProcessing ? (
             <>
-              <h2>{statusText}</h2>
+              <h2 id="upload">{statusText}</h2>
               <img src="src/assets/images/resume-scan.gif" className="w-full max-w-lg" />
             </>
           ) : (
@@ -128,7 +129,7 @@ const Upload = () => {
               </div>
 
               <button className="primary-button" type="submit">
-                Analyze Resume
+                <a href="#upload">Analyze Resume</a>
               </button>
             </form>
           )}

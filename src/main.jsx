@@ -5,6 +5,7 @@ import { createBrowserRouter , RouterProvider} from 'react-router-dom'
 import App from './App.jsx'
 import Upload from './Components/Upload'
 import Auth from './Components/Auth'
+import Resume from './Components/Resume'
 
 const router = new createBrowserRouter([
   {
@@ -17,12 +18,12 @@ const router = new createBrowserRouter([
   },
   {
     path: '/resume/:id',
-    element: <Upload/>
+    element: <Resume/>
   },
   {
     path:'/auth',
     element: <Auth/>
-  }
+  },
 ])
 
 createRoot(document.getElementById('root')).render(
