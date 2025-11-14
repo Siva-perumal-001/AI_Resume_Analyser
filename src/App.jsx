@@ -45,7 +45,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="bg-[url('./assets/images/bg-main.svg')] bg-cover min-h-screen">
+    <main className="bg-[url('src/assets/images/bg-main.svg')] bg-cover min-h-screen">
       <Navbar />
 
       <section className="main-section">
@@ -63,7 +63,7 @@ const Home = () => {
         {loadingResumes && (
           <div className="flex flex-col items-center justify-center">
             <img
-              src="/assets/images/resume-scan-2.gif"
+              src="/src/assets/images/resume-scan-2.gif"
               className="w-[200px]"
               alt="loading"
             />
