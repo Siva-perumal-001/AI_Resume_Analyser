@@ -6,6 +6,7 @@ import App from './App.jsx'
 import Upload from './Components/Upload'
 import Auth from './Components/Auth'
 import Resume from './Components/Resume'
+import Wipe from './Components/wipe'
 
 const router = new createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = new createBrowserRouter([
     path:'/auth',
     element: <Auth/>
   },
+  {
+    path:'/wipe',
+    element: <Wipe/>
+  }
 ])
 
 createRoot(document.getElementById('root')).render(
