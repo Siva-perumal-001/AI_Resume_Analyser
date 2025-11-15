@@ -20,7 +20,7 @@ const ATS = ({ score, suggestions }) => {
     score > 69 ? "Great Job!" : score > 49 ? "Good Start" : "Needs Improvement";
 
   return (
-    <div className={`bg-gradient-to-b ${gradientClass} to-white rounded-2xl shadow-md w-full p-5 sm:p-6`}>
+    <div className={`bg-linear-to-b ${gradientClass} to-white rounded-2xl shadow-md w-full p-5 sm:p-6`}>
 
       {/* HEADER */}
       <div className="flex items-center gap-4 mb-5 max-sm:gap-3">
@@ -55,7 +55,7 @@ const ATS = ({ score, suggestions }) => {
                   : "/icons/warning.svg"
               }
               alt="icon"
-              className="w-5 h-5 mt-1 flex-shrink-0"
+              className="w-5 h-5 mt-1 shrink-0"
             />
 
             <p

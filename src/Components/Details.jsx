@@ -52,7 +52,7 @@ const CategoryContent = ({ tips }) => {
                 tip.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"
               }
               alt="icon"
-              className="w-5 h-5 mt-1 flex-shrink-0"
+              className="w-5 h-5 mt-1 shrink-0"
             />
             <p className="text-base text-gray-700 leading-tight">
               {tip.tip}
