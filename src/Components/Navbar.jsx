@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="w-full flex items-center justify-between px-3 py-2 bg-white/70 backdrop-blur-md rounded-full max-w-[95%] mx-auto mt-3 shadow-sm">
       
       {/* Logo */}
-      <Link to="/" className="flex items-center gap-2">
+      <Link to="/" className="flex items-center gap-1">
         <img src="/logo.png" alt="logo" className="w-9 h-9" />
         <p className="text-xl font-bold text-gradient">REVALYZE</p>
       </Link>
